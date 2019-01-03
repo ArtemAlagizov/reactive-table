@@ -27,18 +27,19 @@ class App extends Component {
 
     const cellClick = (event, cell) => {
       const borderCss = cell.getElement().style.border;
-      const selectedCellBorderStyle = `${this.defaultBorder} #336699`;
+      const selectedCellBorderStyle = `${this.defaultBorder} rgb(51, 102, 153)`;
       const notSelectedCellBorderStyle = `${this.defaultBorder} transparent`;
+      const currentCellSelected = borderCss !== notSelectedCellBorderStyle;
       const allCells = flatten(cell.getTable().getRows().map(row => row.getCells()));
 
       // deselect all cells
       allCells.map(cell => cell.getElement().style.border = notSelectedCellBorderStyle);
 
       // select/deselect current cell
-      cell.getElement().style.border = borderCss === selectedCellBorderStyle ? notSelectedCellBorderStyle : selectedCellBorderStyle;
+      cell.getElement().style.border = currentCellSelected ? notSelectedCellBorderStyle : selectedCellBorderStyle;
 
       // add current cell to the resulting data
-      window.spotfireData = {
+      window.spotfireData = currentCellSelected ? {} : {
         selectedCellRow: cell.getData(),
         selectedKpiCell: cell.getValue()
       };
