@@ -27,7 +27,7 @@ class App extends Component {
 
     const cellClick = (event, cell) => {
       const borderCss = cell.getElement().style.border;
-      const selectedCellBorderStyle = `${this.defaultBorder} rgb(51, 102, 153)`;
+      const selectedCellBorderStyle = `${this.defaultBorder} #336699`;
       const notSelectedCellBorderStyle = `${this.defaultBorder} transparent`;
       const currentCellSelected = borderCss !== notSelectedCellBorderStyle;
       const allCells = flatten(cell.getTable().getRows().map(row => row.getCells()));
