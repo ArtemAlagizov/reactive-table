@@ -2,30 +2,46 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import {assoc} from 'ramda';
+import {assoc, flatten} from 'ramda';
 
 import 'react-tabulator/lib/styles.css';
 import 'react-tabulator/lib/css/tabulator.min.css'; // theme
 import {ReactTabulator} from 'react-tabulator';
 
 class App extends Component {
+  defaultBorder = '0.2em solid';
+
   render() {
     const cellFormatter = cell => {
       const cellValue = cell.getValue();
       const {threshold, value} = cellValue;
 
       if (value <= threshold) {
-        cell.getElement().style.backgroundColor = 'red';
+        cell.getElement().style.backgroundColor = '#FF3333';
       }
+
+      cell.getElement().style.border = `${this.defaultBorder} transparent`;
 
       return value;
     };
 
     const cellClick = (event, cell) => {
       const borderCss = cell.getElement().style.border;
-      const selectedCellStyle = '0.1em solid green';
+      const selectedCellBorderStyle = `${this.defaultBorder} #336699`;
+      const notSelectedCellBorderStyle = `${this.defaultBorder} transparent`;
+      const allCells = flatten(cell.getTable().getRows().map(row => row.getCells()));
 
-      cell.getElement().style.border = borderCss === selectedCellStyle ? 'none' : selectedCellStyle;
+      // deselect all cells
+      allCells.map(cell => cell.getElement().style.border = notSelectedCellBorderStyle);
+
+      // select/deselect current cell
+      cell.getElement().style.border = borderCss === selectedCellBorderStyle ? notSelectedCellBorderStyle : selectedCellBorderStyle;
+
+      // add current cell to the resulting data
+      window.spotfireData = {
+        selectedCellRow: cell.getData(),
+        selectedKpiCell: cell.getValue()
+      };
     };
 
     const tooltip = cell => `Threshold value is ${cell.getValue().threshold}`;
