@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import {assoc, flatten, isNil} from 'ramda';
+import {assoc, isNil, range} from 'ramda';
 
 import 'react-tabulator/lib/styles.css';
 import 'react-tabulator/lib/css/tabulator.min.css'; // theme
@@ -12,66 +12,59 @@ class App extends Component {
   defaultBorder = '0.2em solid';
   selectedCellBorderStyle = `${this.defaultBorder} #336699`;
   notSelectedCellBorderStyle = `${this.defaultBorder} transparent`;
+  data = [];
+  columns = [];
 
   state = {
+    selectedCell: null,
     selectedCellRow: null,
     selectedKpiCell: null,
     selectedKpiCellField: null
   };
 
-  render() {
+  constructor() {
+    super();
+
+    const tooltip = cell => `Threshold value is ${cell.getValue().threshold}`;
+    const sorter = (a, b) => a.value - b.value;
+    const buildKpiColumn = (title, field, column) => assoc('field', field, assoc('title', title, column));
+
     const cellFormatter = cell => {
       const cellValue = cell.getValue();
       const {threshold, value} = cellValue;
 
-      if (value <= threshold) {
-        cell.getElement().style.backgroundColor = '#FF3333';
+      if (!isNil(value)) {
+        if (value <= threshold) {
+          cell.getElement().style.backgroundColor = '#FF3333';
+        }
+
+        cell.getElement().style.border = isCurrentCellSelected(cell) ? this.selectedCellBorderStyle : this.notSelectedCellBorderStyle;
       }
 
-      cell.getElement().style.border = isCurrentCellSelected(cell) ? this.selectedCellBorderStyle : this.notSelectedCellBorderStyle;
-
-      return value;
-    };
-
-    const isCurrentCellSelected = cell => {
-      if (isNil(this.state.selectedKpiCell)) return false;
-
-      const currentCellRow = cell.getData();
-      const currentCellField = cell.getField();
-      const { selectedKpiCellField, selectedCellRow } = this.state;
-      const isSameRow = selectedCellRow.id === currentCellRow.id;
-      const isSameKey = selectedKpiCellField === currentCellField;
-
-      return isSameKey && isSameRow;
+      return isNil(value) ? '' : value;
     };
 
     const cellClick = (event, cell) => {
       const borderCss = cell.getElement().style.border;
       const currentCellSelected = borderCss !== this.notSelectedCellBorderStyle;
-      const allCells = flatten(cell.getTable().getRows().map(row => row.getCells()));
 
-      // deselect all cells
-      allCells.map(cell => cell.getElement().style.border = this.notSelectedCellBorderStyle);
+      // deselect cell selected previously
+      if (!isNil(this.state.selectedCell)) {
+        this.state.selectedCell.getElement().style.border = this.notSelectedCellBorderStyle;
+      }
 
       // select/deselect current cell
       cell.getElement().style.border = currentCellSelected ? this.notSelectedCellBorderStyle : this.selectedCellBorderStyle;
 
-      // add current cell to the resulting data
-      window.spotfireData = currentCellSelected ? {} : {
-        selectedCellRow: cell.getData(),
-        selectedKpiCell: cell.getValue()
-      };
-
-      this.setState({
+      const currentCellStateAfterClick = {
+        selectedCell: cell,
         selectedCellRow: currentCellSelected ? null : cell.getData(),
         selectedKpiCell: currentCellSelected ? null : cell.getValue(),
         selectedKpiCellField: currentCellSelected ? null : cell.getField()
-      });
-    };
+      };
 
-    const tooltip = cell => `Threshold value is ${cell.getValue().threshold}`;
-    const sorter = (a, b) => a.value - b.value;
-    const buildKpiColumn = (title, field, column) => assoc('field', field, assoc('title', title, column));
+      updateInterestedParties(currentCellStateAfterClick);
+    };
 
     const defaultKpiColumn = {
       align: 'left',
@@ -81,18 +74,57 @@ class App extends Component {
       sorter: sorter
     };
 
-    const columns = [
-      {title: 'Layer', field: 'layer'},
-      buildKpiColumn('KPI 1', 'kpi1', defaultKpiColumn),
-      buildKpiColumn('KPI 2', 'kpi2', defaultKpiColumn),
-      {title: 'Rating', field: 'thresholdKpi1', align: 'center', formatter: 'star'}
-    ];
+    const isCurrentCellSelected = cell => {
+      if (isNil(this.state.selectedKpiCell)) return false;
 
-    const data = [
-      {id: 1, layer: 'Oli Bob', kpi1: {value: 13, threshold: 16}, kpi2: {value: 15, threshold: 2}},
-      {id: 2, layer: 'Bobby', kpi1: {value: 12, threshold: 11}, kpi2: {value: 15, threshold: 24}},
-    ];
+      const currentCellRow = cell.getData();
+      const currentCellField = cell.getField();
+      const {selectedKpiCellField, selectedCellRow} = this.state;
+      const isSameRow = selectedCellRow.id === currentCellRow.id;
+      const isSameKey = selectedKpiCellField === currentCellField;
 
+      return isSameKey && isSameRow;
+    };
+
+    const updateInterestedParties = currentCellStateAfterClick => {
+      // trigger an event to update the document property with the selected cell
+      const updateDocumentProperty = new CustomEvent('updateDocumentProperty', {
+        detail: currentCellStateAfterClick
+      });
+
+      window.dispatchEvent(updateDocumentProperty);
+
+      this.setState(currentCellStateAfterClick);
+    };
+
+    const spotfireData = window.spotfireData ? window.spotfireData.layer : {data: [], columns: []};
+    const columnsSpotfire = spotfireData.columns;
+
+    this.columns = columnsSpotfire.map(columnTitle => {
+      return columnTitle === 'LES_KEY_LAYER_ID' ?
+        {title: 'Layer', field: 'LES_KEY_LAYER_ID'} :
+        buildKpiColumn(columnTitle, columnTitle, defaultKpiColumn)
+    });
+    this.data = spotfireData.data.map(row => {
+      const values = row.items;
+      const results = {
+        id: row.hints.index
+      };
+
+      range(0, 4).map(columnNumber => {
+        results[columnsSpotfire[columnNumber]] = {
+          value: values[columnNumber],
+          threshold: Math.floor(Math.random() * 6) + 1
+        };
+      });
+
+      results[columnsSpotfire[4]] = values[4];
+
+      return results;
+    });
+  }
+
+  render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -101,10 +133,12 @@ class App extends Component {
                alt="logo"/>
         </header>
         <div>
-          <ReactTabulator data={data}
-                          columns={columns}
+          <ReactTabulator data={this.data}
+                          columns={this.columns}
                           tooltips={true}
-                          layout={'fitData'}/>
+                          height="500px"
+                          layout="fitData"
+                          options={{pagination: 'local', paginationSize: 16}}/>
         </div>
       </div>
     );
