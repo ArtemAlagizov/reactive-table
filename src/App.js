@@ -15,7 +15,7 @@ class App extends Component {
   data = [];
   columns = [];
 
-  state = {
+  selectionInfo = {
     selectedCell: null,
     selectedCellRow: null,
     selectedKpiCell: null,
@@ -49,8 +49,8 @@ class App extends Component {
       const currentCellSelected = borderCss !== this.notSelectedCellBorderStyle;
 
       // deselect cell selected previously
-      if (!isNil(this.state.selectedCell)) {
-        this.state.selectedCell.getElement().style.border = this.notSelectedCellBorderStyle;
+      if (!isNil(this.selectionInfo.selectedCell)) {
+        this.selectionInfo.selectedCell.getElement().style.border = this.notSelectedCellBorderStyle;
       }
 
       // select/deselect current cell
@@ -75,11 +75,11 @@ class App extends Component {
     };
 
     const isCurrentCellSelected = cell => {
-      if (isNil(this.state.selectedKpiCell)) return false;
+      if (isNil(this.selectionInfo.selectedKpiCell)) return false;
 
       const currentCellRow = cell.getData();
       const currentCellField = cell.getField();
-      const {selectedKpiCellField, selectedCellRow} = this.state;
+      const {selectedKpiCellField, selectedCellRow} = this.selectionInfo;
       const isSameRow = selectedCellRow.id === currentCellRow.id;
       const isSameKey = selectedKpiCellField === currentCellField;
 
@@ -94,7 +94,7 @@ class App extends Component {
 
       window.dispatchEvent(updateDocumentProperty);
 
-      this.setState(currentCellStateAfterClick);
+      this.selectionInfo = currentCellStateAfterClick;
     };
 
     const spotfireData = window.spotfireData ? window.spotfireData.layer : {data: [], columns: []};
