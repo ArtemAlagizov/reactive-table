@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
-import {ReactTabulator} from 'react-tabulator';
 import {Select} from 'antd';
 import {assoc, isNil, range} from 'ramda';
 import logo from './logo.svg';
 import exampleData from './exampleData.json';
+import TabulatorWrapper from './components/tabulator-wrapper';
 import './App.css';
 import 'antd/dist/antd.css';
-import 'react-tabulator/lib/styles.css';
-import 'react-tabulator/lib/css/tabulator.min.css'; // theme
 
 const Option = Select.Option;
 
@@ -205,13 +203,6 @@ class App extends Component {
   };
 
   render() {
-    const tableComponent = <ReactTabulator data={this.state.data}
-                                           columns={this.state.columns}
-                                           tooltips={true}
-                                           height="500px"
-                                           layout="fitData"
-                                           options={{pagination: 'local', paginationSize: 16}}/>;
-    const actualComponent = this.state.columns ? tableComponent : '';
     const select = <Select defaultValue="layer"
                            style={{width: 120, borderRadius: 0}}
                            onChange={this.handleChange}>
@@ -231,7 +222,8 @@ class App extends Component {
           <div className="select-container">
             <div className="select-label">Groupby:</div>
             {select}</div>
-          <div>{actualComponent}</div>
+          <div><TabulatorWrapper data={this.state.data}
+                                 columns={this.state.columns}/></div>
           <div>
             <button onClick={this.sendSetDataEvent}>set layer data</button>
           </div>
