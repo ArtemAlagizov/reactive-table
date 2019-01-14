@@ -77,7 +77,7 @@ class App extends Component {
     const resultingColumns = columns.map(columnTitle => {
       return !isNil(fields[field]) && columnTitle === fields[field].id ?
         {title: fields[field].displayName, field: fields[field].id} :
-        this.buildKpiColumn(columnTitle, columnTitle, this.defaultKpiColumn)
+        this.buildKpiColumn(columnTitle, columnTitle, this.defaultKpiColumn(columnTitle))
     });
     const resultingData = data.map(row => {
       const values = row.items;
@@ -122,6 +122,7 @@ class App extends Component {
   tooltip = cell => `Threshold value is ${cell.getValue().threshold}`;
   sorter = (a, b) => a.value - b.value;
   buildKpiColumn = (title, field, column) => assoc('field', field, assoc('title', title, column));
+  headerTooltip = columnTitle => `yo, that be column ${columnTitle}`;
 
   cellFormatter = cell => {
     const cellValue = cell.getValue();
@@ -162,12 +163,15 @@ class App extends Component {
     this.updateInterestedParties(currentCellStateAfterClick);
   };
 
-  defaultKpiColumn = {
-    align: 'left',
-    formatter: this.cellFormatter,
-    cellClick: this.cellClick,
-    tooltip: this.tooltip,
-    sorter: this.sorter
+  defaultKpiColumn = columnTitle => {
+    return {
+      align: 'left',
+      formatter: this.cellFormatter,
+      cellClick: this.cellClick,
+      tooltip: this.tooltip,
+      sorter: this.sorter,
+      headerTooltip: this.headerTooltip(columnTitle)
+    }
   };
 
   isCurrentCellSelected = cell => {
