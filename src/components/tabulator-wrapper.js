@@ -5,7 +5,7 @@ import 'tabulator-tables/dist/css/tabulator.min.css'; //import Tabulator stylesh
 class TabulatorWrapper extends Component {
   element = React.createRef();
 
-  tabulator = null; //variable to hold your table
+  tabulator = null;
 
   componentDidMount() {
     //instantiate Tabulator when element is mounted
@@ -20,12 +20,21 @@ class TabulatorWrapper extends Component {
   }
 
   render() {
-    const {data, columns, height} = this.props;
+    const {data, columns, filteredColumns} = this.props;
+    const tabulator = this.tabulator;
 
-    if (this.tabulator && data) {
-      this.tabulator.setData(data);
-      this.tabulator.setHeight(height);
-      this.tabulator.setColumns(columns);
+    if (tabulator && data) {
+      tabulator.setData(data);
+      tabulator.setColumns(columns);
+      tabulator.getColumns().map(column => {
+        const isToBeHidden = filteredColumns.includes(column.getField());
+
+        if (isToBeHidden) {
+          column.hide();
+        }
+      });
+
+      tabulator.redraw();
     }
 
     return (<div ref={element => (this.element = element)}/>);

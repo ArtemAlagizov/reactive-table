@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Select} from 'antd';
-import {assoc, isNil, range} from 'ramda';
+import {assoc, isNil, range, difference} from 'ramda';
 import logo from './logo.svg';
 import exampleData from './exampleData.json';
 import TabulatorWrapper from './components/tabulator-wrapper';
@@ -36,6 +36,12 @@ class App extends Component {
     }
   };
 
+  tracks = [
+    'LES_KEY_LAYER_ID',
+    'LES_PRODUCT_ID',
+    'LES_MACHINE_ID'
+  ];
+
   allData = {
     layer: null,
     product: null,
@@ -45,7 +51,8 @@ class App extends Component {
   state = {
     field: null,
     columns: null,
-    data: null
+    data: null,
+    filteredColumns: null
   };
 
   constructor() {
@@ -57,7 +64,8 @@ class App extends Component {
       this.allData = {
         layer: data.layer || null,
         product: data.product || null,
-        machine: data.machine || null
+        machine: data.machine || null,
+        selectedKpis: data.selectedKpis || null
       };
 
       this.setDataBasedOnGroupByType('layer');
@@ -66,33 +74,46 @@ class App extends Component {
 
   setDataBasedOnGroupByType = groupByType => {
     const data = this.allData;
-    const spotfireData = data[groupByType] ? data[groupByType].data : [];
-    const spotfireColumns = data[groupByType] ? data[groupByType].columns : [];
+    const track = data[groupByType];
+    const spotfireData = track ? track.data : [];
+    const spotfireColumns = track ? track.columns : [];
+    const spotfireFilteredColumns = data['selectedKpis'] ? data['selectedKpis'] : [];
+    const allKpiColumns = spotfireColumns.filter(columnTitle => !this.tracks.includes(columnTitle));
+    const columnsToHide = difference(allKpiColumns, spotfireFilteredColumns);
+    const currentData = {
+      data: spotfireData,
+      columns: spotfireColumns,
+      field: groupByType,
+      filteredColumns: columnsToHide,
+      allKpiColumns: allKpiColumns
+    };
 
-    this.setCurrentData(spotfireData, spotfireColumns, groupByType);
+    this.setCurrentData(currentData);
   };
 
-  setCurrentData = (data, columns, field) => {
+  setCurrentData = currentData => {
+    const {data, columns, field, filteredColumns, allKpiColumns} = currentData;
     const fields = this.fields;
     const resultingColumns = columns.map(columnTitle => {
       return !isNil(fields[field]) && columnTitle === fields[field].id ?
         {title: fields[field].displayName, field: fields[field].id} :
         this.buildKpiColumn(columnTitle, columnTitle, this.defaultKpiColumn(columnTitle))
     });
+    const numberOfKpiColumns = allKpiColumns.length;
     const resultingData = data.map(row => {
       const values = row.items;
       const results = {
         id: row.hints.index
       };
 
-      range(0, 4).map(columnNumber => {
+      range(0, numberOfKpiColumns).map(columnNumber => {
         results[columns[columnNumber]] = {
           value: values[columnNumber],
           threshold: Math.floor(Math.random() * 6) + 1
         };
       });
 
-      results[columns[4]] = values[4];
+      results[columns[numberOfKpiColumns]] = values[numberOfKpiColumns];
 
       return results;
     });
@@ -102,7 +123,8 @@ class App extends Component {
     this.setState({
       field: field,
       columns: resultingColumns,
-      data: resultingData
+      data: resultingData,
+      filteredColumns: filteredColumns
     });
   };
 
@@ -227,7 +249,8 @@ class App extends Component {
             <div className="select-label">Groupby:</div>
             {select}</div>
           <div><TabulatorWrapper data={this.state.data}
-                                 columns={this.state.columns}/></div>
+                                 columns={this.state.columns}
+                                 filteredColumns={this.state.filteredColumns}/></div>
           <div>
             <button onClick={this.sendSetDataEvent}>set layer data</button>
           </div>
