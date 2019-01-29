@@ -1,1 +1,1148 @@
-{}
+{
+  "layer": {
+    "columns": [
+      "RPN_X",
+      "RPN_Y",
+      "ROPI_X",
+      "ROPI_Y",
+      "LES_KEY_LAYER_ID"
+    ],
+    "pageDataRows": false,
+    "pageRowSize": 10000,
+    "baseTableHints": {
+      "rows": 700,
+      "visible": 700,
+      "marked": 0,
+      "tableName": "Alignment.Monitoring.LotLevelKPIs",
+      "settingName": "Alignment.Monitoring.LayerLotLevelKPIs"
+    },
+    "data": [
+      {
+        "items": [
+          0.31496254594073159,
+          0.28523511598980117,
+          5.6352787329266354,
+          5.9405869507528068,
+          "130"
+        ],
+        "hints": {
+          "index": 0
+        }
+      },
+      {
+        "items": [
+          0.28515044472003381,
+          0.28089491375489406,
+          4.6367650638274274,
+          4.2672407123585545,
+          "13G"
+        ],
+        "hints": {
+          "index": 1
+        }
+      },
+      {
+        "items": [
+          0.80641659607902272,
+          0.42532468926167782,
+          6.7663123639066676,
+          5.8280856605243825,
+          "13GBAP"
+        ],
+        "hints": {
+          "index": 2
+        }
+      },
+      {
+        "items": [
+          0.51719426684062964,
+          1.0104860372625568,
+          2.7494196241342528,
+          5.0294738325339363,
+          "140"
+        ],
+        "hints": {
+          "index": 3
+        }
+      },
+      {
+        "items": [
+          0.28425518597481,
+          0.292070280298614,
+          4.4121348806625855,
+          3.9199450015380664,
+          "2111972093"
+        ],
+        "hints": {
+          "index": 4
+        }
+      },
+      {
+        "items": [
+          0.77391089295335791,
+          0.74216466809139159,
+          1.810528727028089,
+          3.0761959405188932,
+          "C58AAN"
+        ],
+        "hints": {
+          "index": 5
+        }
+      },
+      {
+        "items": [
+          0.36492592285136288,
+          0.35581421270418323,
+          5.6352787329266354,
+          5.9405869507528068,
+          "L10"
+        ],
+        "hints": {
+          "index": 6
+        }
+      },
+      {
+        "items": [
+          null,
+          null,
+          null,
+          null,
+          "LAYER"
+        ],
+        "hints": {
+          "index": 7
+        }
+      },
+      {
+        "items": [
+          2.366835781922362,
+          0.87254888399890351,
+          4.42159982995106,
+          4.4923662733393162,
+          "Layer1"
+        ],
+        "hints": {
+          "index": 8
+        }
+      },
+      {
+        "items": [
+          0.64100773140019174,
+          0.53775185767565636,
+          2.61449785228492,
+          2.2083788142808558,
+          "LayerH1"
+        ],
+        "hints": {
+          "index": 9
+        }
+      },
+      {
+        "items": [
+          0.57333083134038143,
+          0.62576036585753114,
+          2.1988753976015327,
+          2.5132721956640078,
+          "LayerH2"
+        ],
+        "hints": {
+          "index": 10
+        }
+      },
+      {
+        "items": [
+          0.70527450436808647,
+          1.6930989301842561,
+          2.1693462961792469,
+          4.3104739745960847,
+          "LayerH3"
+        ],
+        "hints": {
+          "index": 11
+        }
+      }
+    ],
+    "additionalTables": [
+      {
+        "columns": [
+          "Max([LEA_KPI_ST_RPN_ACTIVE_MAX_X])",
+          "Max([LEA_KPI_ST_RPN_ACTIVE_MAX_Y])",
+          "Max([LEA_KPI_ST_ROPI_ACTIVE_MAX_X])",
+          "Max([LEA_KPI_ST_ROPI_ACTIVE_MAX_Y])",
+          "LES_PRODUCT_ID"
+        ],
+        "pageDataRows": false,
+        "pageRowSize": 10000,
+        "baseTableHints": {
+          "rows": 700,
+          "visible": 700,
+          "marked": 0,
+          "tableName": "Alignment.Monitoring.LotLevelKPIs",
+          "settingName": "LE_KPI_PRODUCT"
+        },
+        "data": [
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "1X276B"
+            ],
+            "hints": {
+              "index": 0
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "4TP"
+            ],
+            "hints": {
+              "index": 1
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "6526"
+            ],
+            "hints": {
+              "index": 2
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "754S"
+            ],
+            "hints": {
+              "index": 3
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "8100"
+            ],
+            "hints": {
+              "index": 4
+            }
+          },
+          {
+            "items": [
+              0.36492592285136288,
+              0.35581421270418323,
+              5.6352787329266354,
+              5.9405869507528068,
+              "8130"
+            ],
+            "hints": {
+              "index": 5
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "8567"
+            ],
+            "hints": {
+              "index": 6
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "9091"
+            ],
+            "hints": {
+              "index": 7
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "ABF"
+            ],
+            "hints": {
+              "index": 8
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "ASML"
+            ],
+            "hints": {
+              "index": 9
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "BMMOSBC2/10"
+            ],
+            "hints": {
+              "index": 10
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "DQ9MA"
+            ],
+            "hints": {
+              "index": 11
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "FM"
+            ],
+            "hints": {
+              "index": 12
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "KJLB/LB100EXP"
+            ],
+            "hints": {
+              "index": 13
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "MICRON/JOBS/S15C"
+            ],
+            "hints": {
+              "index": 14
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "Monitor/EUVSBC2"
+            ],
+            "hints": {
+              "index": 15
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "RL"
+            ],
+            "hints": {
+              "index": 16
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "S15C"
+            ],
+            "hints": {
+              "index": 17
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "S26A"
+            ],
+            "hints": {
+              "index": 18
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "SBC2A"
+            ],
+            "hints": {
+              "index": 19
+            }
+          },
+          {
+            "items": [
+              0.51719426684062964,
+              1.0104860372625568,
+              2.7494196241342528,
+              5.0294738325339363,
+              "SFCVERIX"
+            ],
+            "hints": {
+              "index": 20
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "SFK0LP2A"
+            ],
+            "hints": {
+              "index": 21
+            }
+          },
+          {
+            "items": [
+              0.364925922851363,
+              0.35581421270418329,
+              5.6352787329266354,
+              5.9405869507528068,
+              "TMIG18"
+            ],
+            "hints": {
+              "index": 22
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "TMIG19"
+            ],
+            "hints": {
+              "index": 23
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "TMJR98"
+            ],
+            "hints": {
+              "index": 24
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "TMKB98"
+            ],
+            "hints": {
+              "index": 25
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "Z21D"
+            ],
+            "hints": {
+              "index": 26
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "Z2BM"
+            ],
+            "hints": {
+              "index": 27
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "Z32B"
+            ],
+            "hints": {
+              "index": 28
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "Z42Z"
+            ],
+            "hints": {
+              "index": 29
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "ZSAT"
+            ],
+            "hints": {
+              "index": 30
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "ZSAT/ABF"
+            ],
+            "hints": {
+              "index": 31
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "hints": {
+              "index": 32
+            }
+          }
+        ]
+      },
+      {
+        "columns": [
+          "Max([LEA_KPI_ST_RPN_ACTIVE_MAX_X])",
+          "Max([LEA_KPI_ST_RPN_ACTIVE_MAX_Y])",
+          "Max([LEA_KPI_ST_ROPI_ACTIVE_MAX_X])",
+          "Max([LEA_KPI_ST_ROPI_ACTIVE_MAX_Y])",
+          "LES_MACHINE_ID"
+        ],
+        "pageDataRows": false,
+        "pageRowSize": 10000,
+        "baseTableHints": {
+          "rows": 700,
+          "visible": 700,
+          "marked": 0,
+          "tableName": "Alignment.Monitoring.LotLevelKPIs",
+          "settingName": "LE_KPI_MACHINE"
+        },
+        "data": [
+          {
+            "items": [
+              0.36492592285136288,
+              0.35581421270418323,
+              5.6352787329266354,
+              5.9405869507528068,
+              "1100"
+            ],
+            "hints": {
+              "index": 0
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "2020"
+            ],
+            "hints": {
+              "index": 1
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "3011"
+            ],
+            "hints": {
+              "index": 2
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "3894"
+            ],
+            "hints": {
+              "index": 3
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "3981"
+            ],
+            "hints": {
+              "index": 4
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "4448"
+            ],
+            "hints": {
+              "index": 5
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "5348"
+            ],
+            "hints": {
+              "index": 6
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "5749"
+            ],
+            "hints": {
+              "index": 7
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "5948"
+            ],
+            "hints": {
+              "index": 8
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "6089"
+            ],
+            "hints": {
+              "index": 9
+            }
+          },
+          {
+            "items": [
+              0.51719426684062964,
+              1.0104860372625568,
+              2.7494196241342528,
+              5.0294738325339363,
+              "6420"
+            ],
+            "hints": {
+              "index": 10
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "7153"
+            ],
+            "hints": {
+              "index": 11
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "7180"
+            ],
+            "hints": {
+              "index": 12
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "7661"
+            ],
+            "hints": {
+              "index": 13
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "8401"
+            ],
+            "hints": {
+              "index": 14
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "9043"
+            ],
+            "hints": {
+              "index": 15
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "9445"
+            ],
+            "hints": {
+              "index": 16
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "9739"
+            ],
+            "hints": {
+              "index": 17
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "9832"
+            ],
+            "hints": {
+              "index": 18
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "AT74"
+            ],
+            "hints": {
+              "index": 19
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "CW41"
+            ],
+            "hints": {
+              "index": 20
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "DP91"
+            ],
+            "hints": {
+              "index": 21
+            }
+          },
+          {
+            "items": [
+              0.364925922851363,
+              0.35581421270418329,
+              5.6352787329266354,
+              5.9405869507528068,
+              "ED11"
+            ],
+            "hints": {
+              "index": 22
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "GH40"
+            ],
+            "hints": {
+              "index": 23
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "IL42"
+            ],
+            "hints": {
+              "index": 24
+            }
+          },
+          {
+            "items": [
+              null,
+              null,
+              null,
+              null,
+              "JI13"
+            ],
+            "hints": {
+              "index": 25
+            }
+          }
+        ]
+      }
+    ],
+    "user": "aalagizo",
+    "static": false,
+    "wait": 0,
+    "runtime": {
+    },
+    "legend": true,
+    "config": {}
+  },
+  "product": {
+    "columns": [
+      "RPN_X",
+      "RPN_Y",
+      "ROPI_X",
+      "ROPI_Y",
+      "LES_PRODUCT_ID"
+    ],
+    "pageDataRows": false,
+    "pageRowSize": 10000,
+    "baseTableHints": {
+      "rows": 88,
+      "visible": 88,
+      "marked": 0,
+      "tableName": "Alignment.Monitoring.LotLevelKPIs",
+      "settingName": "Alignment.Monitoring.ProductLotLevelKPIs"
+    },
+    "data": [
+      {
+        "items": [
+          0.36492592285136288,
+          0.35581421270418323,
+          5.6352787329266354,
+          5.9405869507528068,
+          "8130"
+        ],
+        "hints": {
+          "index": 0
+        }
+      },
+      {
+        "items": [
+          0.80641659607902272,
+          0.42532468926167782,
+          6.7663123639066676,
+          5.8280856605243825,
+          "IG"
+        ],
+        "hints": {
+          "index": 1
+        }
+      },
+      {
+        "items": [
+          0.77391089295335791,
+          0.74216466809139159,
+          1.810528727028089,
+          3.0761959405188932,
+          "IK"
+        ],
+        "hints": {
+          "index": 2
+        }
+      },
+      {
+        "items": [
+          0.51719426684062964,
+          1.0104860372625568,
+          2.7494196241342528,
+          5.0294738325339363,
+          "SFCVERIX"
+        ],
+        "hints": {
+          "index": 3
+        }
+      },
+      {
+        "items": [
+          0.25630120974358217,
+          0.28089491375489406,
+          4.6367650638274274,
+          4.2672407123585545,
+          "TMIF20"
+        ],
+        "hints": {
+          "index": 4
+        }
+      },
+      {
+        "items": [
+          0.31496254594073159,
+          0.28523511598980117,
+          5.6352787329266354,
+          5.9405869507528068,
+          "TMIG18"
+        ],
+        "hints": {
+          "index": 5
+        }
+      },
+      {
+        "items": [
+          2.366835781922362,
+          1.6930989301842561,
+          4.42159982995106,
+          4.4923662733393162,
+          null
+        ],
+        "hints": {
+          "index": 6
+        }
+      }
+    ]
+  },
+  "machine": {
+    "columns": [
+      "RPN_X",
+      "RPN_Y",
+      "ROPI_X",
+      "ROPI_Y",
+      "LES_MACHINE_ID"
+    ],
+    "pageDataRows": false,
+    "pageRowSize": 10000,
+    "baseTableHints": {
+      "rows": 88,
+      "visible": 88,
+      "marked": 0,
+      "tableName": "Alignment.Monitoring.LotLevelKPIs",
+      "settingName": "Alignment.Monitoring.MachineLotLevelKPIs"
+    },
+    "data": [
+      {
+        "items": [
+          2.366835781922362,
+          0.87254888399890351,
+          4.42159982995106,
+          4.4923662733393162,
+          "0016"
+        ],
+        "hints": {
+          "index": 0
+        }
+      },
+      {
+        "items": [
+          0.36492592285136288,
+          0.35581421270418323,
+          5.6352787329266354,
+          5.9405869507528068,
+          "1100"
+        ],
+        "hints": {
+          "index": 1
+        }
+      },
+      {
+        "items": [
+          null,
+          null,
+          null,
+          null,
+          "4448"
+        ],
+        "hints": {
+          "index": 2
+        }
+      },
+      {
+        "items": [
+          0.51719426684062964,
+          1.0104860372625568,
+          2.7494196241342528,
+          5.0294738325339363,
+          "6420"
+        ],
+        "hints": {
+          "index": 3
+        }
+      },
+      {
+        "items": [
+          0.77391089295335791,
+          0.74216466809139159,
+          1.810528727028089,
+          3.0761959405188932,
+          "7408"
+        ],
+        "hints": {
+          "index": 4
+        }
+      },
+      {
+        "items": [
+          0.28425518597481,
+          0.292070280298614,
+          4.4121348806625855,
+          3.9199450015380664,
+          "8977"
+        ],
+        "hints": {
+          "index": 5
+        }
+      },
+      {
+        "items": [
+          0.70527450436808647,
+          1.6930989301842561,
+          2.61449785228492,
+          4.3104739745960847,
+          "9812"
+        ],
+        "hints": {
+          "index": 6
+        }
+      },
+      {
+        "items": [
+          0.80641659607902272,
+          0.42532468926167782,
+          6.7663123639066676,
+          5.9405869507528068,
+          "ED11"
+        ],
+        "hints": {
+          "index": 7
+        }
+      }
+    ]
+  },
+  "selectedKpis": [
+    "ROPI_X",
+    "RPN_X",
+    "RPN_Y"
+  ]
+}
